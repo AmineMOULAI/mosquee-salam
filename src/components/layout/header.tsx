@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image"; // 1. Ajout de l'import pour le logo
 import { motion, useScroll, useTransform } from "framer-motion";
-import { IconCrescentV3 } from "@/components/ui/icons-salem-v3";
 import { LuxuryButton, MagneticButton } from "@/components/ui/luxury-button";
 import { cn } from "@/lib/utils";
 
@@ -41,13 +41,21 @@ export const Header = () => {
       <div className="max-w-[1800px] w-full mx-auto flex items-center justify-between">
         {/* LOGO SECTION */}
         <Link href="/" className="group flex items-center gap-4">
-          <IconCrescentV3 className="w-10 h-10 text-accent group-hover:scale-110 transition-transform duration-700" />
+          {/* 2. Remplacement de l'icône par le logo en gardant tes animations */}
+          <Image 
+            src="/images/salam-logo.png" 
+            alt="Logo Al-Salem" 
+            width={80} 
+            height={50} 
+            priority
+            className="group-hover:scale-110 transition-transform duration-700 object-contain" 
+          />
           <div className="flex flex-col">
             <span className="text-[12px] font-bold tracking-[0.4em] uppercase text-primary leading-none">
-              Al-Salem
+              Salam
             </span>
             <span className="text-[8px] tracking-[0.2em] uppercase text-primary/40 mt-1">
-              Mosquée &amp; Centre
+              Mosquée & Centre
             </span>
           </div>
         </Link>
