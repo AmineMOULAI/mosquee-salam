@@ -8,13 +8,13 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   
-  --font-amiri: var(--font-amiri);
-  --font-outfit: var(--font-outfit);
-  
+  /* Typographie - Alignement avec le logo */
   --font-sans: var(--font-outfit);
-  --font-serif: var(--font-amiri);
-  --font-heading: var(--font-amiri);
+  --font-serif: var(--font-cinzel); 
+  --font-arabic: var(--font-amiri); 
+  --font-heading: var(--font-cinzel);
 
+  /* Palette de couleurs */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -29,63 +29,76 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
+  /* Bordures nettes (Minimalisme Radical) */
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
 }
 
 :root {
-  /* Al-Salem "Quiet Luxury" Palette */
-  --background: oklch(0.99 0.002 80); /* Papier pur / Ritz Ivory */
-  --foreground: oklch(0.12 0.01 260); /* Obsidian Blue / Saint Laurent Black */
+  /* Al-Salem "Quiet Luxury" Palette - Mode Lumineux (Reverse) */
   
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.12 0.01 260);
+  /* Blanc Cassé / Ivoire Clair */
+    --background: 40 20% 98%; 
+    --foreground: 222 47% 11%; /* Bleu Nuit Profond */
+    
+    /* Bleu Nuit Profond (Deep Navy Blue) */
+    --primary: 222 47% 11%;
+    --primary-foreground: 40 20% 98%;
+
+    /* On garde l'accent pour les petits détails si besoin, ou on le met en bleu aussi */
+    --accent: 222 47% 15%;
+    --accent-foreground: 40 20% 98%;
   
-  --primary: oklch(0.12 0.01 260);
-  --primary-foreground: oklch(0.99 0.002 80);
+  /* Textes moins importants (Bleu nuit adouci) */
+  --muted: oklch(0.96 0.01 85);
+  --muted-foreground: oklch(0.55 0.02 260);
   
-  --secondary: oklch(0.96 0.005 80);
-  --secondary-foreground: oklch(0.12 0.01 260);
+  /* Bordures (Bleu nuit très transparent) */
+  --border: oklch(0.18 0.03 260 / 0.1);
+  --input: oklch(0.18 0.03 260 / 0.1);
   
-  /* Or Antique / Champagne (plus sobre, moins shuriken) */
-  --accent: oklch(0.82 0.06 85); 
-  --accent-foreground: oklch(0.12 0.01 260);
-  
-  --muted: oklch(0.96 0.005 80);
-  --muted-foreground: oklch(0.5 0.01 260);
-  
-  --border: oklch(0.12 0.01 260 / 0.06);
-  --input: oklch(0.12 0.01 260 / 0.06);
-  --ring: oklch(0.82 0.06 85);
+  /* Focus rings (Or) */
+  --ring: oklch(0.75 0.15 85);
   
   --radius: 0rem; 
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50 selection:bg-accent/20;
+    @apply border-border outline-ring/50 selection:bg-accent/20 selection:text-primary;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
-    /* Texture Micro-Grain Saint Laurent */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3%3C/svg%3%3E");
+    /* Texture Micro-Grain très subtile pour la matière papier */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
     background-attachment: fixed;
   }
 }
 
 @layer utilities {
+  .font-arabic {
+    font-family: var(--font-arabic), serif;
+  }
+  .font-serif {
+    font-family: var(--font-serif), serif;
+  }
+
   .luxury-mask {
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   }
   .text-luxury-tracking {
-    letter-spacing: 0.5em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
   }
   .line-draw {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: line-anim 3s ease forwards;
+  }
+  
+  .shadow-luxury {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
   }
 }
 
